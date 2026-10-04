@@ -2,94 +2,112 @@
 
 [![Unity Version](https://img.shields.io/badge/Unity-6000.3.13f1%20(Unity%206)-blue.svg?logo=unity)](https://unity.com/)
 [![Render Pipeline](https://img.shields.io/badge/Render%20Pipeline-URP-informational.svg)](https://unity.com/srp/universal-render-pipeline)
+[![Jam Timeframe](https://img.shields.io/badge/Jam%20Duration-48%20Hours-orange.svg)](https://github.com/Edyboziron/istiklalSavascilari2)
 [![Award](https://img.shields.io/badge/Award-Best%20Mechanics%20(En%20%C4%B0yi%20Mekanik)-gold.svg?logo=trophy)](https://github.com/Edyboziron/istiklalSavascilari2)
-[![Event](https://img.shields.io/badge/Game%20Jam-Madalyon%20Game%20Jam-purple.svg)](https://github.com/Edyboziron/istiklalSavascilari2)
+[![Event](https://img.shields.io/badge/Game%20Jam-Madalyon%20Game%20Jam%202025-purple.svg)](https://github.com/Edyboziron/istiklalSavascilari2)
 
 <p align="center">
-  <img src="Assets/butonlarveUI/oyunlogo.png" alt="İstiklal Savaşçıları 2: Çete Logo" width="480"/>
+  <img src="Assets/butonlarveUI/oyunlogo.png" alt="İstiklal Savaşçıları 2: Çete Logo" width="500"/>
 </p>
 
-> 🏆 **Winner of "Best Mechanics" (En İyi Mekanik) Category Award at Madalyon Game Jam!**
+<p align="center">
+  <em><strong>"Tetiği çeken değil, emri veren kazanır."</strong></em><br>
+  <em>("It is not the one who pulls the trigger who wins, but the one who gives the order.")</em>
+</p>
 
 ---
 
-## 📖 Overview
-
-**İstiklal Savaşçıları 2: Çete** is a real-time tactical auto-battler and strategy game developed for the **Madalyon Game Jam**. Inspired by the heroic local resistance bands (*Kuva-yi Milliye / Çete*) during the Turkish War of Independence (*Kurtuluş Savaşı*), the game challenges players to command and deploy frontline fighters and marksmen to defend Anatolian territories against advancing hostile forces, culminating in the historic liberation of Maraş.
-
-Built within a tight jam timeframe using **Unity 6** and the **Universal Render Pipeline (URP)**, the project blends tactical pre-combat placement, dynamic resource management, and intelligent autonomous combat routines.
+> 🏆 **Winner of "Best Mechanics" (En İyi Mekanik) Category Award at Madalyon Game Jam 2025!**  
+> *Developed in 48 hours for Madalyon Game Jam.*
 
 ---
 
-## 🎮 Core Mechanics & Features
+## 🏛️ Story & Mission (Hikaye ve Amaç)
 
-> *The game was awarded **Best Mechanics** for its engaging synergy between tactical deployment, resource-preservation economy, and autonomous combat behavior.*
+Welcome to a **3D Auto-Chess Roguelike** experience set in the misty, gunpowder-scented streets of **1920 Maraş**, fusing historical heritage with deep tactical strategy.
+
+The city is under foreign occupation. Enemy forces have besieged the territory by fortifying **"3 Strategic Castles" (3 Kale)** at key regional strongholds. 
+
+As a **Çetebaşı (Irregular Militia Commander)**, your mission is to:
+- Rally scattered local fighters and build your resistance band from scratch.
+- Master resource and gold management under wartime scarcity.
+- Overcome dynamic and shifting battlefield conditions across **Forest (Orman)**, **Snow (Kar)**, and **Rain (Yağmur)**.
+- Break the 3 locks, crush the occupation forces, and liberate the city!
+
+Reflecting the unyielding spirit of **Kuvâ-yi Milliye**, you channel the organizational resilience of the people onto the field of battle.
+
+---
+
+## 🎮 Gameplay & Mechanics (Oynanış Özellikleri)
 
 <p align="center">
-  <img src="Assets/butonlarveUI/maraswin.png" alt="Victory Screen Art" width="600"/>
+  <img src="Assets/butonlarveUI/maraswin.png" alt="Victory Screen Art - Maraş Kurtuluşu" width="620"/>
 </p>
 
-### 1. 📐 Tactical Grid Placement (`BuildingManager.cs` & `DragDropItem.cs`)
-- **Drag-and-Drop Deployment**: Intuitive unit positioning using Unity's New Input System, supporting both mouse cursor and touch inputs.
-- **Layer & Snapping Validation**: Units are projected onto the battlefield via Raycasts against dedicated terrain and building layers, preventing overlaps and out-of-bounds drops.
-- **Smart Refund Safety**: If a placement is cancelled or obstructed, gold is preserved immediately.
+Awarded **Best Mechanics** at Madalyon Game Jam 2025, the game delivers a rich tactical loop inspired by auto-battlers like *Teamfight Tactics (TFT)* blended with goal-oriented roguelike progression:
 
-### 2. ⚔️ Autonomous Hybrid Combat (`CombatSystem.cs` & `RangedCombatSystem.cs`)
-- **Melee Combatants**: Advance towards nearest targets, trigger smooth blend tree animations (`Run`, `Attack`, `Die`), and deliver melee blows when inside attack range.
-- **Ranged Marksmen**: Position themselves at standoff distances, track targets with dynamic field-of-view checks, and fire physics-based ballistic projectiles (`Projectile.cs`).
-- **Dynamic Target Prioritization**: Active target scanning with periodic frequency routines (`UpdateTarget`), automatically re-evaluating priorities when targets fall in battle.
+### 1. ♟️ Tactical Depth & 3D Auto-Chess
+- **Grid-Based Deployment**: Position your warriors across tactical grid tiles before engaging in combat (`BuildingManager.cs` & `DragDropItem.cs`).
+- **Autonomous Resolution**: Once satisfied with your tactical formation, press the **"HAZIR" (READY)** button to start time and watch your strategy play out autonomously.
+- **Smart Placement Validation**: Raycast-assisted placement against designated ground layers prevents overlaps and guarantees placement fairness with immediate refund safety.
 
-### 3. 💨 Tactical Dash System (`SmoothDash.cs`)
-- **Repositioning & Evasion**: Specialized ranged fighters possess a smooth burst-dash mechanic that allows them to quickly break away from melee chokepoints, reposition on the flank, and instantly reset target acquisition.
+### 2. ⚡ Synergy System (Sinerji Sistemi)
+- Gather and deploy matching unit classes to activate distinctive **Buffs** and synergy bonuses, augmenting your warband’s combat potency against overwhelming odds.
 
-### 4. 💰 Economy & Survival Incentive (`GoldManager.cs` & `GameManager.cs`)
-- **Resource Management**: Each recruited unit has an upfront gold cost.
-- **Unit Preservation Bonus**: Unlike standard auto-battlers where units are disposable, **every surviving unit awards bonus gold (`birimBasinaAltin = 50`)** at the end of each round. This incentivizes strategic positioning, protection of fragile ranged units, and thoughtful tactical execution.
+### 3. 💰 Resource & Wartime Economy Management (Kaynak Yönetimi)
+- Every hard-fought victory brings gold spoils (`GoldManager.cs`).
+- **Survival Incentive**: In addition to standard spoils, every friendly unit that survives the round yields a preservation dividend (`birimBasinaAltin = 50`), heavily rewarding disciplined tactical defense over reckless attrition.
 
-### 5. 🗺️ Multi-Stage Battle Progression
-- Battle through escalating hostile waves across progressive scenarios (`SampleScene` $\rightarrow$ `SampleScene 1` $\rightarrow$ `SampleScene 2` $\rightarrow$ `SampleScene 3` $\rightarrow$ `win`), carrying earned funds into tougher encounters.
+### 4. 🧭 Goal-Oriented Roguelike Progression (Roguelike İlerleme)
+- Not an aimless infinite loop — a purposeful, milestone-driven campaign.
+- Battle across 3 escalating regional biomes and weather conditions:
+  - 🌲 **Forest (Orman)**
+  - ❄️ **Snow (Kar)**
+  - 🌧️ **Rain (Yağmur)**
+- Breaking each castle lock demands adaptive unit placement and responsive tactical counters.
+
+### 5. ⚔️ Hybrid Combat & Smooth Dash Evasion
+- **Frontline Melee**: Units close the gap with blend tree walk/run cycles, engaging in close-quarters melee duels (`CombatSystem.cs`).
+- **Marksmen & Ballistics**: Ranged gunners acquire targets at standoff distance, firing physical projectiles (`RangedCombatSystem.cs` & `Projectile.cs`).
+- **Tactical Dash**: Fast-moving units utilize a coroutine-based burst dash (`SmoothDash.cs`) to disengage from melee bottlenecks, flank hostile lines, and reacquire optimal firing angles.
+
+---
+
+## 🎨 Art & Atmosphere (Sanat ve Atmosfer)
+
+- **Visual Style (Görsel Tarz)**: Stylized, low-poly 3D aesthetics honoring the architecture, outfits, and gritty wartime atmosphere of 1920s Anatolia.
+- **Sound Design (Ses Tasarımı)**: Immersive ambient audio and original AI-assisted musical compositions (*"The Call of the Crescent Moon"*), heightening tension during skirmishes and triumph in victory.
 
 ---
 
 ## 🕹️ Controls & How to Play
 
-| Action | Control (Mouse / Touch) |
+| Action | Controls |
 |---|---|
-| **Deploy Unit** | Click & Drag unit portrait from bottom panel onto the battlefield grid |
-| **Inspect / Reposition** | Left-Click / Tap placed friendly unit to pick up & relocate |
-| **Start Battle** | Click the **Ready / Başlat** button to resume time (`timeScale = 1`) and engage combat |
-| **Camera Navigation** | Pointer drag / Arrow keys |
+| **Deploy Fighter** | Left-Click & Drag unit token from bottom tray onto active grid cells |
+| **Relocate Unit** | Click / Tap deployed friendly unit to reposition prior to battle |
+| **Engage Battle** | Click the **"HAZIR" (READY / BAŞLAT)** button to commence combat |
+| **Camera View** | Pointer navigation / Arrow keys |
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 👥 Development Team & Credits (Geliştirici Ekip)
 
-- **Engine**: Unity 6 (`6000.3.13f1`)
+*Developed within **48 hours** as part of **Madalyon Game Jam 2025**.*
+
+- 🛠️ **Enes Bozdemir ([@Edyboziron](https://github.com/Edyboziron))**: Developer
+- 🎨 **Deniz Mirik ([@DenizMirik7](https://github.com/DenizMirik7))**: Developer / 3D Designer
+- 🎵 **Muhammet Emin Yakut**: 2D Designer / Sound Designer
+
+---
+
+## 💻 Tech Stack (Kullanılan Teknolojiler)
+
+- **Game Engine**: Unity 3D (`Unity 6 / 6000.3.13f1`)
+- **Language**: C#
 - **Render Pipeline**: Universal Render Pipeline (URP)
-- **Input System**: Unity New Input System (`com.unity.inputsystem`)
-- **UI Framework**: Unity UGUI + TextMesh Pro
-- **Key Scripts**:
-  - `GameManager.cs` / `manager.cs`: Orchestrates game state, round timers, win/loss triggers, and stage progression.
-  - `BuildingManager.cs`: Handles real-time raycasting, grid calculations, ghost preview, and placement validation.
-  - `CombatSystem.cs`: Drives melee state machine, damage calculations, and animation transitions.
-  - `RangedCombatSystem.cs`: Controls ranged combat logic, projectile instantiation, and fire cooldowns.
-  - `SmoothDash.cs`: Executes asynchronous coroutine dashes for tactical repositioning.
-  - `GoldManager.cs`: Persistent singleton managing player funds, deductions, and reward payouts.
-
----
-
-## 👥 The Team & Credits
-
-Developed with passion during **Madalyon Game Jam**:
-
-- **Enes ([@Edyboziron](https://github.com/Edyboziron))** — *Game Designer & Game Developer*
-  - Core mechanic design, grid placement systems, unit balancing, combat state logic, and gameplay programming.
-- **Deniz Mirik ([@DenizMirik7](https://github.com/DenizMirik7))** — *Game Developer / Team Member*
-  - Combat animations, audio management, UI integration, and scene composition.
-- **Muhammet Emin Yakut** — *Game Developer / Team Member*
-  - Level design, asset staging, and gameplay testing.
-
-Special thanks to the **Madalyon Game Jam** organizers, mentors, and fellow jammers for hosting a fantastic event!
+- **Input Framework**: Unity New Input System
+- **Audio Generation**: AI-assisted music & original wartime soundscapes
 
 ---
 
@@ -97,24 +115,24 @@ Special thanks to the **Madalyon Game Jam** organizers, mentors, and fellow jamm
 
 ### Prerequisites
 - [Unity Hub](https://unity.com/download)
-- **Unity Editor 6000.3.13f1** (or compatible Unity 6 release)
-- Universal Render Pipeline package
+- **Unity Editor 6000.3.13f1** (Unity 6)
 
-### Setup Steps
-1. Clone this repository:
+### How to Run the Project
+1. Clone the repository:
    ```bash
    git clone https://github.com/Edyboziron/istiklalSavascilari2.git
    ```
-2. Open **Unity Hub** and click **Add** $\rightarrow$ select the cloned repository folder.
-3. Ensure the project is opened with **Unity 6000.3.13f1**.
-4. In the Unity Project window, navigate to:
+2. Open **Unity Hub**, select **Add**, and choose the project directory.
+3. Open the project with **Unity 6000.3.13f1**.
+4. In the Unity Project window, load:
    ```
    Assets/Scenes/anamenu.unity
    ```
-5. Press the **Play** button in the Unity Editor to experience the game!
+5. Press **Play** in the editor to join the liberation struggle!
 
 ---
 
 <p align="center">
-  <i>Developed for Madalyon Game Jam. All rights reserved.</i>
+  <em>Maraş'ın kurtuluş mücadelesine katılmaya hazır mısın? Çeteni kur ve kilidi kır!</em><br>
+  <strong>© 2025 Madalyon Game Jam Team. All rights reserved.</strong>
 </p>
